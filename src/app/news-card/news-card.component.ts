@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { NewsItem } from "src/data/NewsItem";
+import { ApiCallerService } from "../api-caller.service";
+import { Rating } from "src/data/Rating";
 
 @Component({
   selector: "news-card",
@@ -12,7 +14,7 @@ export class NewsCardComponent implements OnInit {
   public displayRatingPanel: boolean = false;
   public ratingVal: number = 5;
 
-  constructor() {}
+  constructor(private apiCaller: ApiCallerService) {}
 
   ngOnInit() {}
 
@@ -24,5 +26,12 @@ export class NewsCardComponent implements OnInit {
     this.displayRatingPanel = true;
   }
 
-  public submitRating() {}
+  data: any;
+  public submitRating() {
+    var rating: Rating = new Rating(this.ratingVal);
+    this.apiCaller.AddRating(rating).subscribe(x => {
+      this.displayRatingPanel = false;
+      this.data = rating;
+    });
+  }
 }
