@@ -31,7 +31,7 @@ export class NewsCardComponent implements OnInit {
     var rating: Rating = new Rating(this.ratingVal);
     this.apiCaller.AddRating(rating).subscribe(x => {
       this.displayRatingPanel = false;
-      this.data = rating;
+      this.data = x;
     });
   }
 }
