@@ -7,8 +7,8 @@ import { NewsItem } from "src/data/NewsItem";
   providedIn: "root"
 })
 export class ApiCallerService {
-  // private serviceUrl: string = 'http://127.0.0.1:5000';
-  private serviceUrl: string = "https://indiv-proj-serv.herokuapp.com";
+  private serviceUrl: string = "http://127.0.0.1:5000";
+  // private serviceUrl: string = "https://indiv-proj-serv.herokuapp.com";
 
   constructor(private http: HttpClient) {}
 

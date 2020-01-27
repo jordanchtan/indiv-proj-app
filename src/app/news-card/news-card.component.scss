@@ -1,16 +1,23 @@
 .news-card {
-    margin: 1rem;
-    margin-bottom: 0;
+  margin: 1rem;
+  margin-bottom: 0;
 
-    .title {
-        font-weight: 500;
-    }
-    .description {
-        color: grey;
-    }
+  .title {
+    font-weight: 500;
+  }
+  .description {
+    color: grey;
+  }
 }
 
 a {
-    text-decoration: none;
-    color: none ;
+  text-decoration: none;
+  color: none;
+}
+
+.rating-panel {
+  display: flex;
+  .rating-select {
+    flex: 1;
+  }
 }

@@ -10,6 +10,8 @@ import { NewsFeedComponent } from "./news-feed/news-feed.component";
 import { MatCardModule } from "@angular/material/card";
 import { LoginComponent } from "./login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatSliderModule } from "@angular/material/slider";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     HttpClientModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

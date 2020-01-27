@@ -1,6 +1,19 @@
-<a href="{{ newsItem.url }}" target="_blank">
-  <mat-card class="news-card">
+<mat-card class="news-card">
+  <a href="{{ newsItem.url }}" target="_blank" (click)="onClick()">
     <div class="title">{{ index + 1 }}. {{ newsItem.title }}</div>
     <div class="description">{{ newsItem.description }}</div>
-  </mat-card>
-</a>
+  </a>
+  <div *ngIf="displayRatingPanel" class="rating-panel">
+    <mat-slider
+      class="rating-select"
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1"
+      min="1"
+      max="10"
+      [(value)]="ratingVal"
+    >
+    </mat-slider>
+    <button mat-button (click)="submitRating()">Submit</button>
+  </div>
+</mat-card>
