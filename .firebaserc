@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "indiv-proj": {
+      "hosting": {
+        "indiv-project-app": [
+          "indiv-proj"
+        ]
+      }
+    }
+  }
+}

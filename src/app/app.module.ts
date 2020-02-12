@@ -12,6 +12,9 @@ import { LoginComponent } from "./login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatButtonModule } from "@angular/material/button";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { MatButtonModule } from "@angular/material/button";
     FormsModule,
     ReactiveFormsModule,
     MatSliderModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule // imports firebase/auth, only needed for auth features,
   ],
   providers: [],
   bootstrap: [AppComponent]
