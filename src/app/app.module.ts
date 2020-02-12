@@ -15,13 +15,16 @@ import { MatButtonModule } from "@angular/material/button";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment";
+import { RegisterComponent } from "./register/register.component";
+import { AngularFireAuthGuardModule } from "@angular/fire/auth-guard";
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsCardComponent,
     NewsFeedComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { environment } from "../environments/environment";
     MatSliderModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features,
+    AngularFireAuthModule,
+    AngularFireAuthGuardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

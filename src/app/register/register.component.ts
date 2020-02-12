@@ -1,15 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthService } from "../auth.service";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
-  selector: "login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  selector: "register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.scss"]
 })
-export class LoginComponent {
+export class RegisterComponent {
   form: FormGroup;
   email: string;
   password: string;
@@ -35,16 +34,28 @@ export class LoginComponent {
   //   //   });
   //   // }
   // }
-  login() {
+
+  register() {
     this.afAuth.auth
-      .signInWithEmailAndPassword(this.email, this.password)
+      .createUserWithEmailAndPassword(this.email, this.password)
       .then((resp: firebase.auth.UserCredential) => {
         console.log("success");
-        this.router.navigate(["news-feed"]);
+        this.router.navigate(["login"]);
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == "auth/weak-password") {
+          alert("The password is too weak.");
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
       });
   }
 
-  goToRegister() {
-    this.router.navigate(["register"]);
+  goToLogin() {
+    this.router.navigate(["login"]);
   }
 }

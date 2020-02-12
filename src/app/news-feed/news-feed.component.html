@@ -1,3 +1,8 @@
+<button (click)="logout()">Logout</button>
 <div class="news-feed">
-    <news-card *ngFor = "let newsItem of newsItems; index as i" [newsItem]="newsItem" [index]="i"></news-card>
+  <news-card
+    *ngFor="let newsItem of newsItems; index as i"
+    [newsItem]="newsItem"
+    [index]="i"
+  ></news-card>
 </div>

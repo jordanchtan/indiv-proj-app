@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiCallerService } from "../api-caller.service";
 import { NewsItem } from "src/data/NewsItem";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "news-feed",
@@ -9,7 +11,11 @@ import { NewsItem } from "src/data/NewsItem";
 })
 export class NewsFeedComponent implements OnInit {
   public newsItems: NewsItem[] = [];
-  constructor(private apiCaller: ApiCallerService) {}
+  constructor(
+    private apiCaller: ApiCallerService,
+    private afAuth: AngularFireAuth,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getNewsItems();
@@ -20,6 +26,13 @@ export class NewsFeedComponent implements OnInit {
       data.forEach((item: NewsItem) => {
         this.newsItems.push(item);
       });
+    });
+  }
+
+  logout() {
+    this.afAuth.auth.signOut().then(x => {
+      console.log("success");
+      this.router.navigate(["login"]);
     });
   }
 }
