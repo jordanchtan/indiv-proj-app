@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment";
 import { RegisterComponent } from "./register/register.component";
 import { AngularFireAuthGuardModule } from "@angular/fire/auth-guard";
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AngularFireAuthGuardModule } from "@angular/fire/auth-guard";
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireAuthGuardModule
+    AngularFireAuthGuardModule,
+    NgxAuthFirebaseUIModule.forRoot(PUT_YOUR_FIREBASE_API_KEY_HERE)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@ import { Rating } from "src/data/Rating";
 export class NewsCardComponent implements OnInit {
   @Input() newsItem: NewsItem;
   @Input() index: number;
-  public displayRatingPanel: boolean = false;
+  public displayRatingPanel: boolean = true;
   public ratingVal: number = 5;
 
   constructor(private apiCaller: ApiCallerService) {}
