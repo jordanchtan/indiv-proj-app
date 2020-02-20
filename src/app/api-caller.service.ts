@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { NewsItem } from "src/data/NewsItem";
+import { Article } from "src/data/Article";
 import { Rating } from "src/data/Rating";
 
 @Injectable({
@@ -15,8 +15,8 @@ export class ApiCallerService {
 
   // maybe ret http resp
 
-  public GetNewsItems(): Observable<NewsItem[]> {
-    return this.http.get<NewsItem[]>(this.serviceUrl + "/news-items");
+  public GetNewsItems(): Observable<Article[]> {
+    return this.http.get<Article[]>(this.serviceUrl + "/news-items");
   }
 
   public AddRating(rating: Rating): Observable<Rating> {
