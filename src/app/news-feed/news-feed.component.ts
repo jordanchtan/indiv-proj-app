@@ -24,10 +24,10 @@ export class NewsFeedComponent implements OnInit {
   public getNewsItems() {
     this.apiCaller.GetNewsItems().subscribe((data: Article[]) => {
       data.forEach((a: Article) => {
-        var parsed: any = JSON.parse(a.article_json);
-        var title: string = parsed.title;
-        var description: string = parsed.description;
-        var url: string = parsed.url;
+        var a_json: any = a.article_json;
+        var title: string = a_json.title;
+        var description: string = a_json.description;
+        var url: string = a_json.url;
 
         var item: ArticleItem = new ArticleItem(
           a.article_id,
