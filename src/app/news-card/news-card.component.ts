@@ -3,17 +3,17 @@ import { ArticleItem } from "src/data/Article";
 import { ApiCallerService } from "../api-caller.service";
 import { Rating } from "src/data/Rating";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 @Component({
   selector: "news-card",
   templateUrl: "./news-card.component.html",
-  styleUrls: ["./news-card.component.scss"]
+  styleUrls: ["./news-card.component.scss"],
 })
 export class NewsCardComponent implements OnInit {
   @Input() newsItem: ArticleItem;
   @Input() index: number;
   public displayRatingPanel: boolean = true;
-  public ratingVal: number = 5;
   public userEmail: string;
 
   constructor(
@@ -22,9 +22,15 @@ export class NewsCardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.afAuth.user.subscribe(u => {
+    this.afAuth.user.subscribe((u) => {
       this.userEmail = u.email;
     });
+  }
+
+  emojiList = ["Love", "Wow", "Haha", "Sad", "Angry"];
+  emojiPath(emoji) {
+    emoji = emoji.toLowerCase();
+    return `assets/${emoji}.png`;
   }
 
   public formatLabel(value: number): string {
@@ -36,13 +42,13 @@ export class NewsCardComponent implements OnInit {
   }
 
   data: any;
-  public submitRating() {
+  public submitRating(ratingVal) {
     var rating: Rating = new Rating(
-      this.ratingVal,
+      ratingVal,
       this.userEmail,
       this.newsItem.article_id
     );
-    this.apiCaller.AddRating(rating).subscribe(x => {
+    this.apiCaller.AddRating(rating).subscribe((x) => {
       this.displayRatingPanel = false;
       this.data = x;
     });

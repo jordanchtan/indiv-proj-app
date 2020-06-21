@@ -3,7 +3,7 @@
     <div class="title">{{ index + 1 }}. {{ newsItem.title }}</div>
     <div class="description">{{ newsItem.description }}</div>
   </a>
-  <div *ngIf="displayRatingPanel" class="rating-panel">
+  <!-- <div *ngIf="displayRatingPanel" class="rating-panel">
     <mat-slider
       class="rating-select"
       thumbLabel
@@ -15,6 +15,21 @@
     >
     </mat-slider>
     <button mat-button (click)="submitRating()">Submit</button>
+  </div> -->
+  <!-- <div>
+    <span *ngFor="let emoji of emojiList; index as i" (click)="selectEmoji(emoji)" [(value)]="ratingVal">
+      <img [src]="emojiPath(emoji)" width="75px" />
+    </span>
   </div>
+  <button mat-button (click)="submitRating()">Submit</button> -->
+
+  <mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle *ngFor="let emoji of emojiList; index as i" [value]="i">
+      <img [src]="emojiPath(emoji)" width="50px" />
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+  <!-- <div class="example-selected-value">
+    Selected value: {{ emojiList[group.value] }}
+  </div> -->
+  <button mat-button (click)="submitRating(group.value)">Submit</button>
 </mat-card>
-{{ data | json }}

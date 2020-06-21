@@ -8,11 +8,12 @@ import { auth } from "firebase";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
   title = "indiv-project-app";
   constructor(private afAuth: AngularFireAuth) {}
+
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }

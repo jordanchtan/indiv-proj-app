@@ -18,6 +18,8 @@ import { environment } from "../environments/environment";
 import { RegisterComponent } from "./register/register.component";
 import { AngularFireAuthGuardModule } from "@angular/fire/auth-guard";
 import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
+import { ReactorComponent } from "./reactor/reactor.component";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
     NewsCardComponent,
     NewsFeedComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReactorComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
     BrowserAnimationsModule,
     HttpClientModule,
     MatCardModule,
+    MatButtonToggleModule,
     FormsModule,
     ReactiveFormsModule,
     MatSliderModule,
@@ -40,9 +44,9 @@ import { NgxAuthFirebaseUIModule } from "ngx-auth-firebaseui";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase)
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

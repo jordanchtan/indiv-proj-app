@@ -7,7 +7,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 @Component({
   selector: "login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent {
   form: FormGroup;
@@ -21,20 +21,10 @@ export class LoginComponent {
   ) {
     this.form = this.fb.group({
       email: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
     });
   }
 
-  // login() {
-  //   const val = this.form.value;
-
-  //   // if (val.email && val.password) {
-  //   //   this.authService.login(val.email, val.password).subscribe(() => {
-  //   //     console.log("User is logged in");
-  //   //     this.router.navigateByUrl("/");
-  //   //   });
-  //   // }
-  // }
   login() {
     this.afAuth.auth
       .signInWithEmailAndPassword(this.email, this.password)

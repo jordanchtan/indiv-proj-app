@@ -5,7 +5,7 @@ import { Article } from "src/data/Article";
 import { Rating } from "src/data/Rating";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ApiCallerService {
   // private serviceUrl: string = "http://127.0.0.1:5000";

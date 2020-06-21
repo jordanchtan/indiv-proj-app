@@ -7,10 +7,12 @@ import { Router } from "@angular/router";
 @Component({
   selector: "news-feed",
   templateUrl: "./news-feed.component.html",
-  styleUrls: ["./news-feed.component.scss"]
+  styleUrls: ["./news-feed.component.scss"],
 })
 export class NewsFeedComponent implements OnInit {
   public newsItems: ArticleItem[] = [];
+  public userEmail: String = "";
+
   constructor(
     private apiCaller: ApiCallerService,
     private afAuth: AngularFireAuth,
@@ -19,12 +21,16 @@ export class NewsFeedComponent implements OnInit {
 
   ngOnInit() {
     this.getNewsItems();
+    this.afAuth.user.subscribe((u) => {
+      this.userEmail = u.email;
+    });
   }
 
   public getNewsItems() {
     this.apiCaller.GetNewsItems().subscribe((data: Article[]) => {
       data.forEach((a: Article) => {
         var a_json: any = a.article_json;
+        console.log(a_json);
         var title: string = a_json.title;
         var description: string = a_json.description;
         var url: string = a_json.url;
@@ -42,7 +48,7 @@ export class NewsFeedComponent implements OnInit {
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(x => {
+    this.afAuth.auth.signOut().then((x) => {
       console.log("success");
       this.router.navigate(["login"]);
     });

@@ -1,25 +1,27 @@
-<form [formGroup]="form">
-  <fieldset>
-    <legend>Login</legend>
-    <div class="form-field">
-      <label>Email:</label>
-      <input [(ngModel)]="email" name="email" formControlName="email" />
+<div>
+  <form [formGroup]="form">
+    <fieldset>
+      <legend>Login</legend>
+      <div class="form-field">
+        <label>Email:</label>
+        <input [(ngModel)]="email" name="email" formControlName="email" />
+      </div>
+      <div class="form-field">
+        <label>Password:</label>
+        <input
+          [(ngModel)]="password"
+          name="password"
+          formControlName="password"
+          type="password"
+        />
+      </div>
+    </fieldset>
+    <div class="form-buttons">
+      <button mat-raised-button (click)="login()">Login</button>
     </div>
-    <div class="form-field">
-      <label>Password:</label>
-      <input
-        [(ngModel)]="password"
-        name="password"
-        formControlName="password"
-        type="password"
-      />
-    </div>
-  </fieldset>
-  <div class="form-buttons">
-    <button class="button button-primary" (click)="login()">Login</button>
-  </div>
-</form>
+  </form>
 
-<button class="button button-primary" (click)="goToRegister()">
-  Register instead
-</button>
+  <button mat-raised-button (click)="goToRegister()">
+    Register instead
+  </button>
+</div>
